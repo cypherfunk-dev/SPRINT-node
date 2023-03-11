@@ -16,7 +16,7 @@ puntos, de acuerdo a la siguiente tabla.
 9. 2 puntos
 10. 1 punto
 
-3. Disponibilizar una página donde se pueda obtener el puntaje total de cada escudería, indicando un ranking
+ 3. Disponibilizar una página donde se pueda obtener el puntaje total de cada escudería, indicando un ranking
 con los resultados totales.
-4. Disponibilizar una página donde se pueda obtener la cantidad de abandonos por piloto, indicando un ranking
+ 4. Disponibilizar una página donde se pueda obtener la cantidad de abandonos por piloto, indicando un ranking
 con los resultados totales.
