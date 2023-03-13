@@ -10,6 +10,7 @@
             rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <style>
             body {background-color: burlywood;}
         .container {
@@ -48,7 +49,7 @@
                 <div class="container">
                     {{#each team.equipos}}
                     <h1>Escudería {{escuderia}}</h1>
-
+                    <input type="hidden" name="escuderia" value="{{escuderia}}">
                    <div class="input-group mb-3">
         <label class="input-group-text" for="inputGroupSelect01">Nombre de piloto</label>
         <select class="form-select" id="inputGroupSelect01" name="piloto">
@@ -58,6 +59,24 @@
         </optgroup>
         </select>
     </div>
+
+
+{{!--        <input type="number" name="age" id="age"
+                min="18" max="120" step="1" value="18">
+             years old
+        </label> --}}
+
+
+     <div class="input-group mb-3">
+                        <span class="input-group-text"
+                            id="inputGroup-sizing-default">Lugar
+                        </span>
+                        <input type="number" class="form-control"
+                            aria-label="Sizing 
+                            example input" id="lugar" name="lugar"
+                            aria-describedby="inputGroup-sizing-default"
+                            min="1" max="10" step="1" value="0" required onchange="verificarRepetido(this)">
+                    </div>
          
                     <div class="input-group mb-3">
                         <span class="input-group-text"
@@ -92,6 +111,25 @@
                 </div>
                  <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
+
+
+            <script>
+
+function verificarRepetido(input) {
+  const formulario = document.querySelector("form");
+  const inputs = formulario.querySelectorAll('input[type="number"][name="lugar"]');
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i] !== input && inputs[i].value === input.value) {
+      Swal.fire("El valor " + input.value + " ya ha sido ingresado en otro campo. Por favor ingrese un valor diferente.");
+      input.value = 0;
+      break;
+    }
+  }
+}
+
+
+
+            </script>
         </body>
 
     </html>

@@ -11,6 +11,7 @@ app.set("view engine", "hbs");
 
 const ruta1 = './public/carrera.json'
 const ruta2 = './public/equipos.json'
+const ruta3 = "./public/resultados.json"
 
 hbs.registerHelper("inc", function(value, options)
 {
@@ -21,9 +22,6 @@ app.get('/', (req, res) => {
     res.send('Hola mundo');
 });
 
-
-
-
 app.get('/resultados', (req, res) => {
     let rawrace = fs.readFileSync(ruta1);
     let rawteam = fs.readFileSync(ruta2);
@@ -32,16 +30,36 @@ app.get('/resultados', (req, res) => {
     res.render("index.hbs", { race, team });
 });
 
-
 app.post('/enviar-datos', (req, res) => {
-    console.log(req.body.finalizacarrera);
-    console.log(req.body.tiempo);
-    console.log(JSON.stringify(req.body.piloto));
-    console.log(req.body.ubicacioncierre)
+    const ubicacion = req.body.ubicacioncierre
+    const finish = req.body.finalizacarrera;
+    const tiempo = req.body.tiempo;
+    const piloto = req.body.piloto;
+    const puesto = req.body.lugar;
+    const escuderia = req.body.escuderia;
+    const objetoresultado = puesto.map((lugar, index)=>({
+       
+        "piloto": piloto[index],
+        "puesto": puesto[index],
+        "Finaliza": finish[index],
+        "tiempo": tiempo[index],
+        "escuderia": escuderia[index]
+        }));
+      const resultadosPorUbicacion = {};
+      resultadosPorUbicacion[ubicacion] = objetoresultado;
+
+
+console.log(resultadosPorUbicacion)
+
+
     res.send('Datos recibidos');
+    fs.writeFileSync(ruta3, JSON.stringify(resultadosPorUbicacion));
+
+
+
+
+
   });
-
-
 
 app.get('/puntajestotal', (req, res) => {
     res.send('Página de puntajes totales');
