@@ -1,0 +1,46 @@
+<style>nav {
+  display: flex; /* 1 */
+  justify-content: space-between; /* 2 */
+  padding: 1rem 2rem; /* 3 */
+  background: #cfd8dc; /* 4 */
+}
+
+nav ul {
+  display: flex; /* 5 */
+  list-style: none; /* 6 */
+}
+
+nav li {
+  padding-left: 1rem; /* 7! */
+}
+nav a {
+  text-decoration: none;
+  color: #0d47a1
+}
+@media only screen and (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+  nav ul {
+    flex-direction: column;
+    padding-top: 0.5rem;
+  }
+  nav li {
+    padding: 0.5rem 0;
+  }
+} 
+</style>
+<nav>
+  <h2>FORMULA 1</h2>
+  <ul>
+    <li><a href="#">Ingresar Resultados</a></li>
+    <li><a href="#">Ver Resultados</a></li>
+    <li><a href="#">Totales Escudería</a></li>
+    <li><a href="#">Abandonos por Piloto</a></li>
+  </ul>
+</nav>
+
+
+
+  git config --global user.email "andrescarlos2211@gmail.com"
+  git config --global user.name "Carlos"
