@@ -13,8 +13,7 @@ const ruta1 = './public/carrera.json'
 const ruta2 = './public/equipos.json'
 const ruta3 = "./public/resultados.json"
 
-hbs.registerHelper("inc", function(value, options)
-{
+hbs.registerHelper("inc", function (value, options) {
     return parseInt(value) + 1;
 });
 
@@ -37,29 +36,42 @@ app.post('/enviar-datos', (req, res) => {
     const piloto = req.body.piloto;
     const puesto = req.body.lugar;
     const escuderia = req.body.escuderia;
-    const objetoresultado = puesto.map((lugar, index)=>({
-       
+
+    const objetoresultado = puesto.map((lugar, index) => ({
+
         "piloto": piloto[index],
         "puesto": puesto[index],
         "Finaliza": finish[index],
         "tiempo": tiempo[index],
         "escuderia": escuderia[index]
-        }));
-      const resultadosPorUbicacion = {};
-      resultadosPorUbicacion[ubicacion] = objetoresultado;
+    }));
 
 
-console.log(resultadosPorUbicacion)
+    const resultadosPorUbicacion = {};
+    resultadosPorUbicacion[ubicacion] = objetoresultado;
 
 
-    res.send('Datos recibidos');
-    fs.writeFileSync(ruta3, JSON.stringify(resultadosPorUbicacion));
+    console.log(resultadosPorUbicacion)
 
 
+    fs.readFile(ruta3, (err, data) => {
+        if (err) throw err;
 
+        let resultadosActuales = JSON.parse(data);
 
+        // Combinar los nuevos resultados con los resultados existentes
+        resultadosActuales = Object.assign(resultadosActuales, resultadosPorUbicacion);
 
-  });
+        // Escribir el archivo actualizado
+        fs.writeFile(ruta3, JSON.stringify(resultadosActuales), (err) => {
+            if (err) throw err;
+            console.log('Resultados agregados al archivo!');
+        });
+    });
+
+    res.render("enviado.hbs");
+
+});
 
 app.get('/puntajestotal', (req, res) => {
     res.send('Página de puntajes totales');
