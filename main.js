@@ -24,8 +24,10 @@ app.get('/', (req, res) => {
 app.get('/resultados', (req, res) => {
     let rawrace = fs.readFileSync(ruta1);
     let rawteam = fs.readFileSync(ruta2);
+    let rawresultados = fs.readFileSync(ruta3);
     let race = JSON.parse(rawrace);
     let team = JSON.parse(rawteam);
+    let result = JSON.parse(rawresultados);
     res.render("index.hbs", { race, team });
 });
 
@@ -46,26 +48,42 @@ app.post('/enviar-datos', (req, res) => {
         "escuderia": escuderia[index]
     }));
 
-     const resultadosPorUbicacion = {};
-     resultadosPorUbicacion[ubicacion] = objetoresultado;
-    // let yeison = JSON.stringify(resultadosPorUbicacion);
-    //  fs.writeFileSync(ruta3, yeison);
-    //  res.render("enviado.hbs");
+//      const resultadosPorUbicacion = {};
+//      resultadosPorUbicacion[ubicacion] = objetoresultado;
+//     let resultadosAnteriores = {};
+//     if (fs.existsSync(ruta3)) {
+//         let rawresultados = fs.readFileSync(ruta3);
+//         resultadosAnteriores = JSON.parse(rawresultados);
+//     }
+//     const nuevosResultados = Object.assign({}, resultadosAnteriores, resultadosPorUbicacion);
+//     let yeison = JSON.stringify(nuevosResultados);
+//     fs.writeFileSync(ruta3, yeison);
+//     res.render("enviado.hbs");
+// });
 
-    let resultadosAnteriores = {};
-    if (fs.existsSync(ruta3)) {
-        let rawresultados = fs.readFileSync(ruta3);
-        resultadosAnteriores = JSON.parse(rawresultados);
-    }
+let resultadosAnteriores = {};
+if (fs.existsSync(ruta3)) {
+  let rawresultados = fs.readFileSync(ruta3);
+  resultadosAnteriores = JSON.parse(rawresultados);
+}
 
-    const nuevosResultados = Object.assign({}, resultadosAnteriores, resultadosPorUbicacion);
-    let yeison = JSON.stringify(nuevosResultados);
-    fs.writeFileSync(ruta3, yeison);
-    res.render("enviado.hbs");
+const resultadosPorUbicacion = {};
+resultadosPorUbicacion["carrera"] = ubicacion;
+resultadosPorUbicacion["individuales"] = objetoresultado;
 
+const nuevosResultados = Object.assign({}, resultadosAnteriores);
+nuevosResultados["resultados"] = nuevosResultados["resultados"] || [];
+nuevosResultados["resultados"].push(resultadosPorUbicacion);
 
-
+let yeison = JSON.stringify(nuevosResultados);
+fs.writeFileSync(ruta3, yeison);
+res.render("enviado.hbs");
 });
+
+
+
+
+
 
 app.get('/puntajestotal', (req, res) => {
     res.send('Página de puntajes totales');
