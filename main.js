@@ -11,7 +11,7 @@ app.set("view engine", "hbs");
 
 const ruta1 = './public/carrera.json'
 const ruta2 = './public/equipos.json'
-const ruta3 = "./public/resultados"
+const ruta3 = "./public/resultados.json"
 
 hbs.registerHelper("inc", function (value, options) {
     return parseInt(value) + 1;
@@ -46,18 +46,24 @@ app.post('/enviar-datos', (req, res) => {
         "escuderia": escuderia[index]
     }));
 
+     const resultadosPorUbicacion = {};
+     resultadosPorUbicacion[ubicacion] = objetoresultado;
+    // let yeison = JSON.stringify(resultadosPorUbicacion);
+    //  fs.writeFileSync(ruta3, yeison);
+    //  res.render("enviado.hbs");
 
-    const resultadosPorUbicacion = {};
-    resultadosPorUbicacion[ubicacion] = objetoresultado;
+    let resultadosAnteriores = {};
+    if (fs.existsSync(ruta3)) {
+        let rawresultados = fs.readFileSync(ruta3);
+        resultadosAnteriores = JSON.parse(rawresultados);
+    }
 
-
-    console.log(objetoresultado)
-
-    let resultados = JSON.parse(fs.readFileSync(ruta3  + '.json', 'utf8'));
-    resultados.push(resultadosPorUbicacion);
-
-    fs.writeFileSync(ruta3, JSON.stringify(resultados));
+    const nuevosResultados = Object.assign({}, resultadosAnteriores, resultadosPorUbicacion);
+    let yeison = JSON.stringify(nuevosResultados);
+    fs.writeFileSync(ruta3, yeison);
     res.render("enviado.hbs");
+
+
 
 });
 
