@@ -81,10 +81,6 @@ res.render("enviado.hbs");
 });
 
 
-
-
-
-
 app.get('/puntajestotal', (req, res) => {
     res.send('Página de puntajes totales');
 });
