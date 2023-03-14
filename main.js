@@ -48,19 +48,6 @@ app.post('/enviar-datos', (req, res) => {
         "escuderia": escuderia[index]
     }));
 
-//      const resultadosPorUbicacion = {};
-//      resultadosPorUbicacion[ubicacion] = objetoresultado;
-//     let resultadosAnteriores = {};
-//     if (fs.existsSync(ruta3)) {
-//         let rawresultados = fs.readFileSync(ruta3);
-//         resultadosAnteriores = JSON.parse(rawresultados);
-//     }
-//     const nuevosResultados = Object.assign({}, resultadosAnteriores, resultadosPorUbicacion);
-//     let yeison = JSON.stringify(nuevosResultados);
-//     fs.writeFileSync(ruta3, yeison);
-//     res.render("enviado.hbs");
-// });
-
 let resultadosAnteriores = {};
 if (fs.existsSync(ruta3)) {
   let rawresultados = fs.readFileSync(ruta3);
@@ -81,8 +68,16 @@ res.render("enviado.hbs");
 });
 
 
-app.get('/puntajestotal', (req, res) => {
-    res.send('Página de puntajes totales');
+app.get('/abandonos', (req, res) => {
+    let rawresultados = fs.readFileSync(ruta3);
+    let result = JSON.parse(rawresultados);
+    console.log(result.resultados[1].individuales[0].escuderia);
+
+
+
+    res.render('abandonos.hbs',{result});
+
+
 });
 
 app.listen(port, () => {
