@@ -10,7 +10,7 @@
             rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous">
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <style>
             body {background-color: burlywood;}
         .container {
@@ -44,76 +44,119 @@
                     </select>
                 </div>
 
-                
+
 
                 <div class="container">
                     {{#each team.equipos}}
                     <h1>Escudería {{escuderia}}</h1>
                     <input type="hidden" name="escuderia" value="{{escuderia}}">
-                   <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupSelect01">Nombre de piloto</label>
-        <select class="form-select" id="inputGroupSelect01" name="piloto">
-             <optgroup title="titulo2">
-            <option value="{{piloto1}}">{{piloto1}}</option>
-            <option value="{{piloto2}}">{{piloto2}}</option>
-        </optgroup>
-        </select>
-    </div>
-
-
-{{!--        <input type="number" name="age" id="age"
-                min="18" max="120" step="1" value="18">
-             years old
-        </label> --}}
-
-
-     <div class="input-group mb-3">
-                        <span class="input-group-text"
-                            id="inputGroup-sizing-default">Lugar
-                        </span>
-                        <input type="number" class="form-control"
-                            aria-label="Sizing 
-                            example input" id="lugar" name="lugar"
-                            aria-describedby="inputGroup-sizing-default"
-                            min="1" max="10" step="1" value="0" required onchange="verificarRepetido(this)">
-                    </div>
-         
-                    <div class="input-group mb-3">
-                        <span class="input-group-text"
-                            id="inputGroup-sizing-default">Tiempo
-                        </span>
-                        <input type="text" class="form-control"
-                            aria-label="Sizing
-                            example input" name="tiempo"
-                            aria-describedby="inputGroup-sizing-default"
-                            placeholder="En minutos" required>
-                    </div>
-
                     <div class="input-group mb-3">
                         <label class="input-group-text"
-                            for="inputGroupSelect01">Finaliza
-                            Carrera?</label>
+                            for="inputGroupSelect01">Nombre de piloto</label>
                         <select class="form-select" id="inputGroupSelect01"
-                            name="finalizacarrera">
-                            <optgroup title="titulo">
-                                <option value="Si">Si</option>
-                                <option value="No, por problemas personales">No,
-                                    por problemas personales</option>
-                                <option value="No, por problemas técnicos">No,
-                                    por problemas técnicos </option>
+                            name="piloto">
+                            <optgroup title="titulo2">
+                                <option value="{{piloto1}}">{{piloto1}}</option>
                             </optgroup>
                         </select>
                     </div>
-                    <hr style="width:75%;">
-                    {{/each}}
 
-                   
+                    {{!-- <input type="number" name="age" id="age"
+                        min="18" max="120" step="1" value="18">
+                    years old
+                </label> --}}
+                <div class="input-group mb-3">
+                    <span class="input-group-text"
+                        id="inputGroup-sizing-default">Lugar
+                    </span>
+                    <input type="number" class="form-control"
+                        aria-label="Sizing
+                        example input" id="lugar" name="lugar"
+                        aria-describedby="inputGroup-sizing-default"
+                        min="1" max="20" step="1" value="0" required
+                        onchange="verificarRepetido(this)">
                 </div>
-                 <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
 
+                <div class="input-group mb-3">
+                    <span class="input-group-text"
+                        id="inputGroup-sizing-default">Tiempo
+                    </span>
+                    <input type="text" class="form-control"
+                        aria-label="Sizing
+                        example input" name="tiempo"
+                        aria-describedby="inputGroup-sizing-default"
+                        placeholder="En minutos" required>
+                </div>
 
-            <script>
+                <div class="input-group mb-3">
+                    <label class="input-group-text"
+                        for="inputGroupSelect01">Finaliza
+                        Carrera?</label>
+                    <select class="form-select" id="inputGroupSelect01"
+                        name="finalizacarrera">
+                        <optgroup title="titulo">
+                            <option value="Si">Si</option>
+                            <option value="No, por problemas personales">No,
+                                por problemas personales</option>
+                            <option value="No, por problemas técnicos">No,
+                                por problemas técnicos </option>
+                        </optgroup>
+                    </select>
+                </div>
+                <hr style="width:75%;">
+                <input type="hidden" name="escuderia" value="{{escuderia}}">
+                <div class="input-group mb-3">
+                    <label class="input-group-text"
+                        for="inputGroupSelect01">Nombre de piloto</label>
+                    <select class="form-select" id="inputGroupSelect01"
+                        name="piloto">
+                        <optgroup title="titulo2">
+                            <option value="{{piloto2}}">{{piloto2}}</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text"
+                        id="inputGroup-sizing-default">Lugar
+                    </span>
+                    <input type="number" class="form-control"
+                        aria-label="Sizing
+                        example input" id="lugar" name="lugar"
+                        aria-describedby="inputGroup-sizing-default"
+                        min="1" max="20" step="1" value="0" required
+                        onchange="verificarRepetido(this)">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text"
+                        id="inputGroup-sizing-default">Tiempo
+                    </span>
+                    <input type="text" class="form-control"
+                        aria-label="Sizing
+                        example input" name="tiempo"
+                        aria-describedby="inputGroup-sizing-default"
+                        placeholder="En minutos" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text"
+                        for="inputGroupSelect01">Finaliza
+                        Carrera?</label>
+                    <select class="form-select" id="inputGroupSelect01"
+                        name="finalizacarrera">
+                        <optgroup title="titulo">
+                            <option value="Si">Si</option>
+                            <option value="No, por problemas personales">No,
+                                por problemas personales</option>
+                            <option value="No, por problemas técnicos">No,
+                                por problemas técnicos </option>
+                        </optgroup>
+                    </select>
+                </div>
+                {{/each}}
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <script>
 
 function verificarRepetido(input) {
   const formulario = document.querySelector("form");
@@ -130,6 +173,6 @@ function verificarRepetido(input) {
 
 
             </script>
-        </body>
+    </body>
 
-    </html>
+</html>
