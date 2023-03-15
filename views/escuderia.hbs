@@ -28,12 +28,21 @@
   <body>
     {{> navbar}}
 
-    <div class="container">
+    {{!-- <div class="container">
 
       <h1>Totales por escuderia:</h1>
       {{#each escuderias}}
       <p>{{@key}} - total puntaje: {{this}}</p>
-      {{/each}}
+      {{/each}} --}}
 
+    <div class="container">
+      <h1>Totales por escuderia:</h1>
+      {{#each escuderias}}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <p class="card-text">{{@key}} - {{this}} </p>
+        </div>
+      </div>
+      {{/each}}
     </body>
   </html>

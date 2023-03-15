@@ -27,13 +27,21 @@
   </head>
   <body>
     {{> navbar}}
-
+    
     <div class="container">
-
-      <h1>Abandonos por piloto:</h1>
+        <h1>Abandonos por pilotos:</h1>
       {{#each pilotos}}
-      <p>{{@key}} - Carreras Abandonadas: {{this}}</p>
-      {{/each}}
+      <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <p class="card-text">{{@key}} - {{this}} </p>
+      </div>
+    </div>
+    
+    {{/each}}
+
+
+
 
     </body>
   </html>
+  
