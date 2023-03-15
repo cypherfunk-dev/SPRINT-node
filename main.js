@@ -39,14 +39,43 @@ app.post('/enviar-datos', (req, res) => {
     const puesto = req.body.lugar;
     const escuderia = req.body.escuderia;
 
-    const objetoresultado = puesto.map((lugar, index) => ({
+    const objetoresultado = puesto.map((lugar, index) => {
+        let puntaje;
+        if (puesto[index] == 1) {
+            puntaje = 20;
+        } else if (puesto[index] == 2) {
+            puntaje = 18;
+        } else if (puesto[index] == 3) {
+            puntaje = 15;
+        } else if (puesto[index] == 4) {
+            puntaje = 12;
+        } else if (puesto[index] == 5) {
+            puntaje = 10;
+        } else if (puesto[index] == 6) {
+            puntaje = 8;
+        } else if (puesto[index] == 7) {
+            puntaje = 6;
+        } else if (puesto[index] == 8) {
+            puntaje = 4;
+        } else if (puesto[index] == 9) {
+            puntaje = 2;
+        } else if (puesto[index] == 10) {
+            puntaje = 1;
+        } else {
+            puntaje = 0;
+        }
 
-        "piloto": piloto[index],
-        "puesto": puesto[index],
-        "Finaliza": finish[index],
-        "tiempo": tiempo[index],
-        "escuderia": escuderia[index]
-    }));
+        return {
+
+
+            "piloto": piloto[index],
+            "puesto": puesto[index],
+            "Finaliza": finish[index],
+            "tiempo": tiempo[index],
+            "escuderia": escuderia[index],
+            "puntaje": puntaje
+        };
+    });
 
     let resultadosAnteriores = {};
     if (fs.existsSync(ruta3)) {
@@ -67,38 +96,30 @@ app.post('/enviar-datos', (req, res) => {
     res.render("enviado.hbs");
 });
 
-
 app.get('/abandonos', (req, res) => {
     let rawresultados = fs.readFileSync(ruta3);
     let result = JSON.parse(rawresultados);
-
     let resultados = result.resultados;
-    
     let pilotos = {};
     resultados.forEach((carrera) => {
-      carrera.individuales.forEach((piloto) => {
-        let Finaliza = parseInt(piloto.Finaliza);
-        if (!pilotos[piloto.piloto]) {
-          pilotos[piloto.piloto] = Finaliza;
-        } else {
-          pilotos[piloto.piloto] += Finaliza;
-        }
-      });
+        carrera.individuales.forEach((piloto) => {
+            let Finaliza = parseInt(piloto.Finaliza);
+            if (!pilotos[piloto.piloto]) {
+                pilotos[piloto.piloto] = Finaliza;
+            } else {
+                pilotos[piloto.piloto] += Finaliza;
+            }
+        });
     });
-
-  let pilotosArray = Object.entries(pilotos);
-
-  pilotosArray.sort((a, b) => b[1] - a[1]);
-
-  let pilotosOrdenados = {};
-  for (let i = 0; i < pilotosArray.length; i++) {
-    let [piloto, finalizadas] = pilotosArray[i];
-    pilotosOrdenados[piloto] = finalizadas;
-  }
-
-  res.render('abandonos.hbs', { pilotos: pilotosOrdenados });
+    let pilotosArray = Object.entries(pilotos);
+    pilotosArray.sort((a, b) => b[1] - a[1]);
+    let pilotosOrdenados = {};
+    for (let i = 0; i < pilotosArray.length; i++) {
+        let [piloto, finalizadas] = pilotosArray[i];
+        pilotosOrdenados[piloto] = finalizadas;
+    }
+    res.render('abandonos.hbs', { pilotos: pilotosOrdenados });
 });
-
 
 app.get('/totales', (req, res) => {
     res.render('totales.hbs')
@@ -106,9 +127,28 @@ app.get('/totales', (req, res) => {
 
 
 
+
 app.get('/escuderia', (req, res) => {
-    res.render('totales.hbs')
-})
+
+
+
+
+
+
+
+
+
+
+    res.render('escuderia.hbs', { pilotos: pilotosOrdenados });
+});
+
+
+
+
+
+
+
+
 
 
 app.listen(port, () => {
