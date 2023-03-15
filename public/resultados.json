@@ -1,45 +1,5 @@
 {
   "resultados": [
-    {
-      "carrera": "Escoge una...",
-      "individuales": [
-        {
-          "piloto": "Valtteri Bottas",
-          "puesto": "1",
-          "Finaliza": 1,
-          "tiempo": "1",
-          "escuderia": "Alfa Romeo"
-        },
-        {
-          "piloto": "Guanyu Zhou",
-          "puesto": "2",
-          "Finaliza": 1,
-          "tiempo": "2",
-          "escuderia": "Alfa Romeo"
-        },
-        {
-          "piloto": "Esteban Ocon",
-          "puesto": "3",
-          "Finaliza":1,
-          "tiempo": "3",
-          "escuderia": "Alpine"
-        },
-        {
-          "piloto": "Pierre Gasly",
-          "puesto": "4",
-          "Finaliza": 0,
-          "tiempo": "4",
-          "escuderia": "Alpine"
-        },
-        {
-          "piloto": "Nyck de Vries",
-          "puesto": "6",
-          "Finaliza": 0,
-          "tiempo": "6",
-          "escuderia": "Alpha Tauri"
-        }
-
-      ]
-    }
+    
   ]
 }
