@@ -38,7 +38,8 @@ app.post('/enviar-datos', (req, res) => {
     const piloto = req.body.piloto;
     const puesto = req.body.lugar;
     const escuderia = req.body.escuderia;
-
+    const motivo = req.body.miCheckbox;
+    
     const objetoresultado = puesto.map((lugar, index) => {
         let puntaje;
         if (puesto[index] == 1) {
@@ -73,7 +74,9 @@ app.post('/enviar-datos', (req, res) => {
             "Finaliza": finish[index],
             "tiempo": tiempo[index],
             "escuderia": escuderia[index],
-            "puntaje": puntaje
+            "puntaje": puntaje,
+            "motivo": motivo[index]
+            
         };
     });
 
@@ -152,9 +155,6 @@ app.get('/escuderia', (req, res) => {
         let [escuderia, finalizadas] = pilotosArray[i];
         pilotosOrdenados[escuderia] = finalizadas;
     }
-
-
-    console.log(pilotosOrdenados);
     res.render('escuderia.hbs', { escuderias: pilotosOrdenados });
 });
 
