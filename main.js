@@ -18,7 +18,7 @@ hbs.registerHelper("inc", function (value, options) {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hola mundo');
+    res.render("index.hbs");
 });
 
 app.get('/resultados', (req, res) => {
@@ -28,7 +28,7 @@ app.get('/resultados', (req, res) => {
     let race = JSON.parse(rawrace);
     let team = JSON.parse(rawteam);
     let result = JSON.parse(rawresultados);
-    res.render("index.hbs", { race, team });
+    res.render("resultados.hbs", { race, team });
 });
 
 app.post('/enviar-datos', (req, res) => {
@@ -86,14 +86,10 @@ app.get('/abandonos', (req, res) => {
       });
     });
 
-
-  // Convierte el objeto pilotos a un array de pares [clave, valor]
   let pilotosArray = Object.entries(pilotos);
 
-  // Ordena el array por el valor (en orden descendente)
   pilotosArray.sort((a, b) => b[1] - a[1]);
 
-  // Crea un nuevo objeto a partir de los pares ordenados
   let pilotosOrdenados = {};
   for (let i = 0; i < pilotosArray.length; i++) {
     let [piloto, finalizadas] = pilotosArray[i];
@@ -108,6 +104,11 @@ app.get('/totales', (req, res) => {
     res.render('totales.hbs')
 })
 
+
+
+app.get('/escuderia', (req, res) => {
+    res.render('totales.hbs')
+})
 
 
 app.listen(port, () => {

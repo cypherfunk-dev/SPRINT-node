@@ -21,151 +21,25 @@
             align-items: center;
             justify-content: center;
             border-style: inset;
+            
         }
-        
+      
+img {
+
+  width: 50vw;
+  height: auto;
+
+}
+
+
     </style>
         <title>Resultados</title>
     </head>
 
     {{> navbar}}
     <body>
-        <form action="/enviar-datos" method="POST">
-            <div class="container">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Ubicacion
-                        de cierre</label>
-                    <select class="form-select" id="inputGroupSelect01"
-                        name="ubicacioncierre">
+<img src="img\n95w8rn6.bmp" alt="">
 
-                        <option selected>Escoge una...</option>
-                        {{#each race.carrera}}
-                        <option value="{{circuito}}">{{circuito}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-
-
-
-                <div class="container">
-                    {{#each team.equipos}}
-                    <h1>Escudería {{escuderia}}</h1>
-                    <input type="hidden" name="escuderia" value="{{escuderia}}">
-                    <div class="input-group mb-3">
-                        <label class="input-group-text"
-                            for="inputGroupSelect01">Nombre de piloto</label>
-                        <select class="form-select" id="inputGroupSelect01"
-                            name="piloto">
-                            <optgroup title="titulo2">
-                                <option value="{{piloto1}}">{{piloto1}}</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text"
-                        id="inputGroup-sizing-default">Lugar
-                    </span>
-                    <input type="number" class="form-control"
-                        aria-label="Sizing
-                        example input" id="lugar" name="lugar"
-                        aria-describedby="inputGroup-sizing-default"
-                        min=1 max=20 step=1 value=0 required
-                        onchange="verificarRepetido(this)">
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text"
-                        id="inputGroup-sizing-default">Tiempo
-                    </span>
-                    <input type="number" class="form-control"
-                        aria-label="Sizing
-                        example input" name="tiempo"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder="En minutos" required>
-                </div>
-
-                <div class="input-group mb-3">
-                    <label class="input-group-text"
-                        for="inputGroupSelect01">Abandona
-                        Carrera?</label>
-                    <select class="form-select" id="inputGroupSelect01"
-                        name="finalizacarrera">
-                        <optgroup title="titulo">
-                           
-                            <option value=0>No</option>
-                             <option value=1>Si</option>
-                        </optgroup>
-                    </select>
-                </div>
-                <hr style="width:75%;">
-                <input type="hidden" name="escuderia" value="{{escuderia}}">
-                <div class="input-group mb-3">
-                    <label class="input-group-text"
-                        for="inputGroupSelect01">Nombre de piloto</label>
-                    <select class="form-select" id="inputGroupSelect01"
-                        name="piloto">
-                        <optgroup title="titulo2">
-                            <option value="{{piloto2}}">{{piloto2}}</option>
-                        </optgroup>
-                    </select>
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text"
-                        id="inputGroup-sizing-default">Lugar
-                    </span>
-                    <input type="number" class="form-control"
-                        aria-label="Sizing
-                        example input" id="lugar" name="lugar"
-                        aria-describedby="inputGroup-sizing-default"
-                        min=1 max=20 step=1 value=0 required
-                        onchange="verificarRepetido(this)">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text"
-                        id="inputGroup-sizing-default">Tiempo
-                    </span>
-                    <input type="number" class="form-control"
-                        aria-label="Sizing
-                        example input" name="tiempo"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder="En minutos" required>
-                </div>
-
-                <div class="input-group mb-3">
-                    <label class="input-group-text"
-                        for="inputGroupSelect01">Abandona
-                        Carrera?</label>
-                    <select class="form-select" id="inputGroupSelect01"
-                        name="finalizacarrera">
-                        <optgroup title="titulo">
-                            <option value=0>No</option>
-                            <option value=1>Si</option>
-                            
-                        </optgroup>
-                    </select>
-                </div>
-                {{/each}}
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-        <script>
-
-function verificarRepetido(input) {
-  const formulario = document.querySelector("form");
-  const inputs = formulario.querySelectorAll('input[type="number"][name="lugar"]');
-  for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i] !== input && inputs[i].value === input.value) {
-      Swal.fire("El valor " + input.value + " ya ha sido ingresado en otro campo. Por favor ingrese un valor diferente.");
-      input.value = 0;
-      break;
-    }
-  }
-}
-
-
-
-            </script>
     </body>
 
 </html>
