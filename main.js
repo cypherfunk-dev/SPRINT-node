@@ -97,6 +97,7 @@ app.post('/enviar-datos', (req, res) => {
 });
 
 app.get('/abandonos', (req, res) => {
+    
     let rawresultados = fs.readFileSync(ruta3);
     let result = JSON.parse(rawresultados);
     let resultados = result.resultados;
@@ -130,16 +131,31 @@ app.get('/totales', (req, res) => {
 
 app.get('/escuderia', (req, res) => {
 
+    let rawresultados = fs.readFileSync(ruta3);
+    let result = JSON.parse(rawresultados);
+    let resultados = result.resultados;
+    let escuderias = {};
+    resultados.forEach((carrera) => {
+        carrera.individuales.forEach((escuderia) => {
+            let puesto = parseInt(escuderia.puesto);
+            if (!escuderias[escuderia.escuderia]) {
+                escuderias[escuderia.escuderia] = puesto;
+            } else {
+                escuderias[escuderia.escuderia] += puesto;
+            }
+        });
+    });
+    let pilotosArray = Object.entries(escuderias);
+    pilotosArray.sort((a, b) => b[1] - a[1]);
+    let pilotosOrdenados = {};
+    for (let i = 0; i < pilotosArray.length; i++) {
+        let [escuderia, finalizadas] = pilotosArray[i];
+        pilotosOrdenados[escuderia] = finalizadas;
+    }
 
 
-
-
-
-
-
-
-
-    res.render('escuderia.hbs', { pilotos: pilotosOrdenados });
+    console.log(pilotosOrdenados);
+    res.render('escuderia.hbs', { escuderias: pilotosOrdenados });
 });
 
 
