@@ -73,27 +73,52 @@ app.get('/abandonos', (req, res) => {
     let result = JSON.parse(rawresultados);
 
 
-    console.log(result.resultados.forEach(element => {
+    // console.log(result.resultados.forEach(element => {
 
-        let arr = []
+    //     let arr = []
 
 
-        element.individuales.forEach((element) => {
-            arr.push(element.Finaliza)
-            const initialValue = 0;
-            const sumWithInitial = arr.reduce(
-                (accumulator, currentValue) => accumulator + currentValue,
-                initialValue
-            );
-            console.log(sumWithInitial);
-        });
-    }))
-    // rawresultados.forEach((resultado)=>{
+    //     element.individuales.forEach((element) => {
+    //         arr.push(element.Finaliza)
+    //         const initialValue = 0;
+    //         const sumWithInitial = arr.reduce(
+    //             (accumulator, currentValue) => accumulator + currentValue,
+    //             initialValue
+    //         );
+    //         console.log(sumWithInitial);
+    //     });
+    // }))
 
-    //     console.log(resultado)
-    // })
+    let resultados = result.resultados;
+    let pilotos = {};
+    resultados.forEach((carrera) => {
+      carrera.individuales.forEach((piloto) => {
+        let Finaliza = parseInt(piloto.Finaliza);
+        if (!pilotos[piloto.piloto]) {
+          pilotos[piloto.piloto] = Finaliza;
+        } else {
+          pilotos[piloto.piloto] += Finaliza;
+        }
+      });
+    });
+    
+    console.log("Resultados:");
 
-    res.render('abandonos.hbs', { result });
+    console.log(JSON.stringify(pilotos));
+
+
+
+    Object.keys(pilotos).forEach((piloto) => {
+      console.log(`${piloto} - Carreras Finalizadas: ${pilotos[piloto]}`);
+    });
+    
+
+
+
+
+
+
+    res.render('abandonos.hbs', { pilotos });
 
 
 });
@@ -102,6 +127,8 @@ app.get('/abandonos', (req, res) => {
 app.get('/totales', (req, res) => {
     res.render('totales.hbs')
 })
+
+
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port}`);
