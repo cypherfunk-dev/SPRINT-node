@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.static('public'));
 hbs.registerPartials(__dirname + "/views/partials");
 app.set("view engine", "hbs");
 
@@ -48,37 +48,60 @@ app.post('/enviar-datos', (req, res) => {
         "escuderia": escuderia[index]
     }));
 
-let resultadosAnteriores = {};
-if (fs.existsSync(ruta3)) {
-  let rawresultados = fs.readFileSync(ruta3);
-  resultadosAnteriores = JSON.parse(rawresultados);
-}
+    let resultadosAnteriores = {};
+    if (fs.existsSync(ruta3)) {
+        let rawresultados = fs.readFileSync(ruta3);
+        resultadosAnteriores = JSON.parse(rawresultados);
+    }
 
-const resultadosPorUbicacion = {};
-resultadosPorUbicacion["carrera"] = ubicacion;
-resultadosPorUbicacion["individuales"] = objetoresultado;
+    const resultadosPorUbicacion = {};
+    resultadosPorUbicacion["carrera"] = ubicacion;
+    resultadosPorUbicacion["individuales"] = objetoresultado;
 
-const nuevosResultados = Object.assign({}, resultadosAnteriores);
-nuevosResultados["resultados"] = nuevosResultados["resultados"] || [];
-nuevosResultados["resultados"].push(resultadosPorUbicacion);
+    const nuevosResultados = Object.assign({}, resultadosAnteriores);
+    nuevosResultados["resultados"] = nuevosResultados["resultados"] || [];
+    nuevosResultados["resultados"].push(resultadosPorUbicacion);
 
-let yeison = JSON.stringify(nuevosResultados);
-fs.writeFileSync(ruta3, yeison);
-res.render("enviado.hbs");
+    let yeison = JSON.stringify(nuevosResultados);
+    fs.writeFileSync(ruta3, yeison);
+    res.render("enviado.hbs");
 });
 
 
 app.get('/abandonos', (req, res) => {
     let rawresultados = fs.readFileSync(ruta3);
     let result = JSON.parse(rawresultados);
-    console.log(result.resultados[1].individuales[0].escuderia);
 
 
+    console.log(result.resultados.forEach(element => {
 
-    res.render('abandonos.hbs',{result});
+        let arr = []
+
+
+        element.individuales.forEach((element) => {
+            arr.push(element.Finaliza)
+            const initialValue = 0;
+            const sumWithInitial = arr.reduce(
+                (accumulator, currentValue) => accumulator + currentValue,
+                initialValue
+            );
+            console.log(sumWithInitial);
+        });
+    }))
+    // rawresultados.forEach((resultado)=>{
+
+    //     console.log(resultado)
+    // })
+
+    res.render('abandonos.hbs', { result });
 
 
 });
+
+
+app.get('/totales', (req, res) => {
+    res.render('totales.hbs')
+})
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port}`);
