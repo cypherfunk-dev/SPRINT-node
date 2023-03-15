@@ -5,163 +5,165 @@
       "individuales": [
         {
           "piloto": "Valtteri Bottas",
-          "puesto": "20",
-          "Finaliza": "0",
-          "tiempo": "20",
-          "escuderia": "Alfa Romeo",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Guanyu Zhou",
-          "puesto": "19",
-          "Finaliza": "0",
-          "tiempo": "19",
-          "escuderia": "Alfa Romeo",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Esteban Ocon",
-          "puesto": "18",
-          "Finaliza": "0",
-          "tiempo": "18",
-          "escuderia": "Alpine",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Pierre Gasly",
-          "puesto": "17",
-          "Finaliza": "0",
-          "tiempo": "17",
-          "escuderia": "Alpine",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Nyck de Vries",
-          "puesto": "16",
-          "Finaliza": "0",
-          "tiempo": "16",
-          "escuderia": "Alpha Tauri",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Yuki Tsunoda",
-          "puesto": "15",
-          "Finaliza": "0",
-          "tiempo": "15",
-          "escuderia": "Alpha Tauri",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Lance Stroll",
-          "puesto": "14",
-          "Finaliza": "0",
-          "tiempo": "14",
-          "escuderia": "Aston Martin",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Fernando Alonso",
-          "puesto": "13",
-          "Finaliza": "0",
-          "tiempo": "13",
-          "escuderia": "Aston Martin",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Charles Leclerc",
-          "puesto": "12",
-          "Finaliza": "0",
-          "tiempo": "12",
-          "escuderia": "Ferrari",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Carlos Sainz",
-          "puesto": "11",
-          "Finaliza": "0",
-          "tiempo": "11",
-          "escuderia": "Ferrari",
-          "puntaje": 0
-        },
-        {
-          "piloto": "Kevin Magnussen",
-          "puesto": "10",
-          "Finaliza": "0",
-          "tiempo": "10",
-          "escuderia": "Haas",
-          "puntaje": 1
-        },
-        {
-          "piloto": "Nico Hulkenberg",
-          "puesto": "9",
-          "Finaliza": "0",
-          "tiempo": "9",
-          "escuderia": "Haas",
-          "puntaje": 2
-        },
-        {
-          "piloto": "Lando Norris",
-          "puesto": "8",
-          "Finaliza": "0",
-          "tiempo": "8",
-          "escuderia": "McLaren",
-          "puntaje": 4
-        },
-        {
-          "piloto": "Oscar Piastri",
-          "puesto": "7",
-          "Finaliza": "0",
-          "tiempo": "7",
-          "escuderia": "McLaren",
-          "puntaje": 6
-        },
-        {
-          "piloto": "Lewis Hamilton",
-          "puesto": "6",
-          "Finaliza": "0",
-          "tiempo": "6",
-          "escuderia": "Mercedes",
-          "puntaje": 8
-        },
-        {
-          "piloto": "George Russell",
-          "puesto": "5",
-          "Finaliza": "0",
-          "tiempo": "5",
-          "escuderia": "Mercedes",
-          "puntaje": 10
-        },
-        {
-          "piloto": "Max Verstappen",
-          "puesto": "4",
-          "Finaliza": "0",
-          "tiempo": "4",
-          "escuderia": "Red Bull",
-          "puntaje": 12
-        },
-        {
-          "piloto": "Checo Pérez",
-          "puesto": "3",
-          "Finaliza": "0",
-          "tiempo": "3",
-          "escuderia": "Red Bull",
-          "puntaje": 15
-        },
-        {
-          "piloto": "Alex Albon",
-          "puesto": "2",
-          "Finaliza": "0",
-          "tiempo": "2",
-          "escuderia": "Williams",
-          "puntaje": 18
-        },
-        {
-          "piloto": "Logan Sargeant",
           "puesto": "1",
           "Finaliza": "0",
           "tiempo": "1",
+          "escuderia": "Alfa Romeo",
+          "puntaje": 20,
+          "motivo": "opcion2"
+        },
+        {
+          "piloto": "Guanyu Zhou",
+          "puesto": "2",
+          "Finaliza": "0",
+          "tiempo": "2",
+          "escuderia": "Alfa Romeo",
+          "puntaje": 18,
+          "motivo": "1"
+        },
+        {
+          "piloto": "Esteban Ocon",
+          "puesto": "3",
+          "Finaliza": "0",
+          "tiempo": "3",
+          "escuderia": "Alpine",
+          "puntaje": 15
+        },
+        {
+          "piloto": "Pierre Gasly",
+          "puesto": "5",
+          "Finaliza": "0",
+          "tiempo": "5",
+          "escuderia": "Alpine",
+          "puntaje": 10
+        },
+        {
+          "piloto": "Nyck de Vries",
+          "puesto": "6",
+          "Finaliza": "0",
+          "tiempo": "6",
+          "escuderia": "Alpha Tauri",
+          "puntaje": 8
+        },
+        {
+          "piloto": "Yuki Tsunoda",
+          "puesto": "4",
+          "Finaliza": "0",
+          "tiempo": "4",
+          "escuderia": "Alpha Tauri",
+          "puntaje": 12
+        },
+        {
+          "piloto": "Lance Stroll",
+          "puesto": "7",
+          "Finaliza": "0",
+          "tiempo": "7",
+          "escuderia": "Aston Martin",
+          "puntaje": 6
+        },
+        {
+          "piloto": "Fernando Alonso",
+          "puesto": "8",
+          "Finaliza": "0",
+          "tiempo": "8",
+          "escuderia": "Aston Martin",
+          "puntaje": 4
+        },
+        {
+          "piloto": "Charles Leclerc",
+          "puesto": "10",
+          "Finaliza": "0",
+          "tiempo": "10",
+          "escuderia": "Ferrari",
+          "puntaje": 1
+        },
+        {
+          "piloto": "Carlos Sainz",
+          "puesto": "9",
+          "Finaliza": "0",
+          "tiempo": "9",
+          "escuderia": "Ferrari",
+          "puntaje": 2
+        },
+        {
+          "piloto": "Kevin Magnussen",
+          "puesto": "11",
+          "Finaliza": "0",
+          "tiempo": "11",
+          "escuderia": "Haas",
+          "puntaje": 0
+        },
+        {
+          "piloto": "Nico Hulkenberg",
+          "puesto": "12",
+          "Finaliza": "0",
+          "tiempo": "12",
+          "escuderia": "Haas",
+          "puntaje": 0
+        },
+        {
+          "piloto": "Lando Norris",
+          "puesto": "15",
+          "Finaliza": "0",
+          "tiempo": "15",
+          "escuderia": "McLaren",
+          "puntaje": 0
+        },
+        {
+          "piloto": "Oscar Piastri",
+          "puesto": "14",
+          "Finaliza": "0",
+          "tiempo": "14",
+          "escuderia": "McLaren",
+          "puntaje": 0
+        },
+        {
+          "piloto": "Lewis Hamilton",
+          "puesto": "13",
+          "Finaliza": "0",
+          "tiempo": "13",
+          "escuderia": "Mercedes",
+          "puntaje": 0
+        },
+        {
+          "piloto": "George Russell",
+          "puesto": "20",
+          "Finaliza": "1",
+          "tiempo": "20",
+          "escuderia": "Mercedes",
+          "puntaje": 0
+        },
+        {
+          "piloto": "Max Verstappen",
+          "puesto": "19",
+          "Finaliza": "1",
+          "tiempo": "19",
+          "escuderia": "Red Bull",
+          "puntaje": 0
+        },
+        {
+          "piloto": "Checo Pérez",
+          "puesto": "18",
+          "Finaliza": "0",
+          "tiempo": "18",
+          "escuderia": "Red Bull",
+          "puntaje": 0
+        },
+        {
+          "piloto": "Alex Albon",
+          "puesto": "17",
+          "Finaliza": "0",
+          "tiempo": "17",
           "escuderia": "Williams",
-          "puntaje": 20
+          "puntaje": 0
+        },
+        {
+          "piloto": "Logan Sargeant",
+          "puesto": "16",
+          "Finaliza": "0",
+          "tiempo": "16",
+          "escuderia": "Williams",
+          "puntaje": 0
         }
       ]
     }

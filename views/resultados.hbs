@@ -16,7 +16,7 @@
         .container {
             display: flex;
             background-color: aquamarine;
-            width: 70vh;
+            width:80vh;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
@@ -24,6 +24,8 @@
         }
         
     </style>
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <title>Resultados</title>
     </head>
 
@@ -62,94 +64,115 @@
                     </div>
 
 
-                <div class="input-group mb-3">
-                    <span class="input-group-text"
-                        id="inputGroup-sizing-default">Lugar
-                    </span>
-                    <input type="number" class="form-control"
-                        aria-label="Sizing
-                        example input" id="lugar" name="lugar"
-                        aria-describedby="inputGroup-sizing-default"
-                        min=1 max=20 step=1 value=0 required
-                        onchange="verificarRepetido(this)">
-                </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"
+                            id="inputGroup-sizing-default">Lugar
+                        </span>
+                        <input type="number" class="form-control"
+                            aria-label="Sizing
+                            example input" id="lugar" name="lugar"
+                            aria-describedby="inputGroup-sizing-default"
+                            min=1 max=20 step=1 value=0 required
+                            onchange="verificarRepetido(this)">
+                    </div>
 
-                <div class="input-group mb-3">
-                    <span class="input-group-text"
-                        id="inputGroup-sizing-default">Tiempo
-                    </span>
-                    <input type="number" class="form-control"
-                        aria-label="Sizing
-                        example input" name="tiempo"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder="En minutos" required>
-                </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"
+                            id="inputGroup-sizing-default">Tiempo
+                        </span>
+                        <input type="number" class="form-control"
+                            aria-label="Sizing
+                            example input" name="tiempo"
+                            aria-describedby="inputGroup-sizing-default"
+                            placeholder="En minutos" required>
+                    </div>
 
-                <div class="input-group mb-3">
-                    <label class="input-group-text"
-                        for="inputGroupSelect01">Abandona
-                        Carrera?</label>
-                    <select class="form-select" id="inputGroupSelect01"
-                        name="finalizacarrera">
-                        <optgroup title="titulo">
-                           
-                            <option value=0>No</option>
-                             <option value=1>Si</option>
-                        </optgroup>
-                    </select>
-                </div>
-                <hr style="width:75%;">
-                <input type="hidden" name="escuderia" value="{{escuderia}}">
-                <div class="input-group mb-3">
-                    <label class="input-group-text"
-                        for="inputGroupSelect01">Nombre de piloto</label>
-                    <select class="form-select" id="inputGroupSelect01"
-                        name="piloto">
-                        <optgroup title="titulo2">
-                            <option value="{{piloto2}}">{{piloto2}}</option>
-                        </optgroup>
-                    </select>
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text"
-                        id="inputGroup-sizing-default">Lugar
-                    </span>
-                    <input type="number" class="form-control"
-                        aria-label="Sizing
-                        example input" id="lugar" name="lugar"
-                        aria-describedby="inputGroup-sizing-default"
-                        min=1 max=20 step=1 value=0 required
-                        onchange="verificarRepetido(this)">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text"
-                        id="inputGroup-sizing-default">Tiempo
-                    </span>
-                    <input type="number" class="form-control"
-                        aria-label="Sizing
-                        example input" name="tiempo"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder="En minutos" required>
-                </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text"
+                            for="inputGroupSelect01">Abandona
+                            Carrera?</label>
+                        <select class="form-select" id="inputGroupSelect01"
+                            name="finalizacarrera">
+                            <optgroup title="titulo">
 
-                <div class="input-group mb-3">
-                    <label class="input-group-text"
-                        for="inputGroupSelect01">Abandona
-                        Carrera?</label>
-                    <select class="form-select" id="inputGroupSelect01"
-                        name="finalizacarrera">
-                        <optgroup title="titulo">
-                            <option value=0>No</option>
-                            <option value=1>Si</option>
-                            
-                        </optgroup>
-                    </select>
-                </div>
-                {{/each}}
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-        <script>
+                                <option value=0>No</option>
+                                <option value=1>Si</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3" id="divMostrar"
+                       >
+                        <input type="checkbox" name="miCheckbox" value=1
+                            onclick="deseleccionarOpcion2()"> Problemas tecnicos
+                        <input type="checkbox" name="miCheckbox" value=2
+                            onclick="deseleccionarOpcion1()"> Problemas
+                        personales
+                    </div>
+
+                    <div>
+                        <hr style="width:75%;">
+                        <input type="hidden" name="escuderia"
+                            value="{{escuderia}}">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text"
+                                for="inputGroupSelect01">Nombre de piloto</label>
+                            <select class="form-select" id="inputGroupSelect01"
+                                name="piloto">
+                                <optgroup title="titulo2">
+                                    <option value="{{piloto2}}">{{piloto2}}</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                id="inputGroup-sizing-default">Lugar
+                            </span>
+                            <input type="number" class="form-control"
+                                aria-label="Sizing
+                                example input" id="lugar" name="lugar"
+                                aria-describedby="inputGroup-sizing-default"
+                                min=1 max=20 step=1 value=0 required
+                                onchange="verificarRepetido(this)">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                id="inputGroup-sizing-default">Tiempo
+                            </span>
+                            <input type="number" class="form-control"
+                                aria-label="Sizing
+                                example input" name="tiempo"
+                                aria-describedby="inputGroup-sizing-default"
+                                placeholder="En minutos" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text"
+                                for="inputGroupSelect01">Abandona
+                                Carrera?</label>
+                            <select class="form-select" id="inputGroupSelect01"
+                                name="finalizacarrera">
+                                <optgroup title="titulo">
+                                    <option value=0>No</option>
+                                    <option value=1>Si</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3" id="divMostrar"
+                            >
+                            <input type="checkbox" name="miCheckbox"
+                                value=1
+                                onclick="deseleccionarOpcion2()"> Problemas
+                            tecnicos
+                            <input type="checkbox" name="miCheckbox"
+                                value=2
+                                onclick="deseleccionarOpcion1()"> Problemas
+                            personales
+                        </div>
+                        {{/each}}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+                <script>
 
 function verificarRepetido(input) {
   const formulario = document.querySelector("form");
@@ -162,10 +185,35 @@ function verificarRepetido(input) {
     }
   }
 }
-
-
-
             </script>
-    </body>
+                <script>
+  function deseleccionarOpcion1() {
+    if (document.getElementsByName("miCheckbox")[0].checked) {
+      document.getElementsByName("miCheckbox")[1].checked = false;
+    }
+  }
 
-</html>
+  function deseleccionarOpcion2() {
+    if (document.getElementsByName("miCheckbox")[1].checked) {
+      document.getElementsByName("miCheckbox")[0].checked = false;
+    }
+  }
+</script>
+                <script>
+
+$(document).ready(function(){
+  $('#inputGroupSelect01').change(function(){
+    if($(this).val() == '1'){
+      $('#divMostrar').show();
+    } else{
+      $('#divMostrar').hide();
+    }
+  });
+});
+
+
+
+</script>
+            </body>
+
+        </html>
