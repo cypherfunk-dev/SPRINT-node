@@ -72,24 +72,8 @@ app.get('/abandonos', (req, res) => {
     let rawresultados = fs.readFileSync(ruta3);
     let result = JSON.parse(rawresultados);
 
-
-    // console.log(result.resultados.forEach(element => {
-
-    //     let arr = []
-
-
-    //     element.individuales.forEach((element) => {
-    //         arr.push(element.Finaliza)
-    //         const initialValue = 0;
-    //         const sumWithInitial = arr.reduce(
-    //             (accumulator, currentValue) => accumulator + currentValue,
-    //             initialValue
-    //         );
-    //         console.log(sumWithInitial);
-    //     });
-    // }))
-
     let resultados = result.resultados;
+    
     let pilotos = {};
     resultados.forEach((carrera) => {
       carrera.individuales.forEach((piloto) => {
@@ -101,26 +85,22 @@ app.get('/abandonos', (req, res) => {
         }
       });
     });
-    
-    console.log("Resultados:");
-
-    console.log(JSON.stringify(pilotos));
 
 
+  // Convierte el objeto pilotos a un array de pares [clave, valor]
+  let pilotosArray = Object.entries(pilotos);
 
-    Object.keys(pilotos).forEach((piloto) => {
-      console.log(`${piloto} - Carreras Finalizadas: ${pilotos[piloto]}`);
-    });
-    
+  // Ordena el array por el valor (en orden descendente)
+  pilotosArray.sort((a, b) => b[1] - a[1]);
 
+  // Crea un nuevo objeto a partir de los pares ordenados
+  let pilotosOrdenados = {};
+  for (let i = 0; i < pilotosArray.length; i++) {
+    let [piloto, finalizadas] = pilotosArray[i];
+    pilotosOrdenados[piloto] = finalizadas;
+  }
 
-
-
-
-
-    res.render('abandonos.hbs', { pilotos });
-
-
+  res.render('abandonos.hbs', { pilotos: pilotosOrdenados });
 });
 
 
