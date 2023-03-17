@@ -74,8 +74,7 @@ app.post('/enviar-datos', (req, res) => {
             "Finaliza": finish[index],
             "tiempo": tiempo[index],
             "escuderia": escuderia[index],
-            "puntaje": puntaje,
-            "motivo": motivo[index]
+            "puntaje": puntaje
             
         };
     });
