@@ -32,6 +32,7 @@ app.get('/resultados', (req, res) => {
 });
 
 app.post('/enviar-datos', (req, res) => {
+    
     const ubicacion = req.body.ubicacioncierre
     const finish = req.body.finalizacarrera;
     const tiempo = req.body.tiempo;
@@ -74,8 +75,8 @@ app.post('/enviar-datos', (req, res) => {
             "Finaliza": finish[index],
             "tiempo": tiempo[index],
             "escuderia": escuderia[index],
-            "puntaje": puntaje
-            
+            "puntaje": puntaje,
+            "motivo": motivo[index]
         };
     });
 
